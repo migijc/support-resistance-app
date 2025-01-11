@@ -1,27 +1,59 @@
 from flask import Flask, request, render_template, jsonify
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
+import pandas as pd
+import pandas_ta as ta 
+import numpy as np
+from scipy import stats
+from sklearn.cluster import KMeans
+from scipy.signal import find_peaks
+import yfinance as yf
+
+
+import plotly.graph_objects as go
+
 
 app = Flask(__name__)
 CORS(app)
-
 @app.route('/')
-def test_func():
-    return 'Hello'
+
+def calculate_sr(df, total_outputs):
+    total_outputs = int(total_outputs)
+    close_peaks, _ = find_peaks(df['Close'])
+    open_peaks, _ = find_peaks(df['Open'])
+    high_peaks, _ = find_peaks(df['High'])
+    low_peaks, _ = find_peaks(df['Low'])
+    close_valleys, _ = find_peaks(-df['Close'])
+    open_valleys, _ = find_peaks(df['Open'])
+    high_valleys, _ = find_peaks(df['High'])
+    low_valleys, _ = find_peaks(df['Low'])
+    cluster_data = pd.DataFrame({'Price': df['Close'].iloc[[*close_peaks,*open_peaks,*high_peaks,*low_peaks, *close_valleys, *open_valleys, *high_valleys, *low_valleys,]]})
+    # Apply K-Means clustering
+    kmeans = KMeans(n_clusters= int(total_outputs), random_state=0, ).fit(cluster_data)
+    res_arr = kmeans.cluster_centers_
+    sr_levels = {}
+    for i in range(min(total_outputs, len(res_arr))):  # Loop through the array
+        sr_levels[f'{i+1}'] = res_arr[i][0]
+    return sr_levels  
+
+def get_asset_data(asset_symbol):
+    symbol = asset_symbol.split('/')
+    asset_symbol = symbol[0] + symbol[1]
+    ticker = yf.Ticker(asset_symbol+'=X')
+    df = ticker.history('5y')
+    return df
 
 @app.route('/submit', methods=['GET'])
 def submit():
     if(request.method) == 'GET':
-        # data = request.get_json()
         asset_type = request.args.get('asset_type')
-        asset_symbol =request.args.get('asset_symbol')
+        asset_symbol = request.args.get('asset_symbol')
         time_frame = request.args.get('time_frame')
         period =request.args.get('period')
         total_outputs = request.args.get('total_outputs')
-
-        res = {'asset_type':asset_type, 'asset_symbol':asset_symbol, 'time_frame':time_frame, 'period':period, 'total_outputs':total_outputs}
-        return(res)
+        asset_data = get_asset_data(asset_symbol, )
+        sr = calculate_sr(asset_data,total_outputs)
+        return sr
         
-
 if(__name__ == '__main__'):
     app.run(debug=True)
 
