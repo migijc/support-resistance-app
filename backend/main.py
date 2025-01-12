@@ -32,15 +32,21 @@ def calculate_sr(df, total_outputs):
     res_arr = kmeans.cluster_centers_
     sr_levels = {}
     for i in range(min(total_outputs, len(res_arr))):  # Loop through the array
-        sr_levels[f'{i+1}'] = res_arr[i][0]
+        sr_levels[f'{i+1}'] = np.round(res_arr[i][0], 5)
     return sr_levels  
 
-def get_asset_data(asset_symbol):
-    symbol = asset_symbol.split('/')
-    asset_symbol = symbol[0] + symbol[1]
-    ticker = yf.Ticker(asset_symbol+'=X')
-    df = ticker.history('5y')
-    return df
+# create logic to handle different asset types, IE Stocks dont need to be split etc..
+def get_asset_data(asset_symbol, asset_type, time_frame):
+    if(asset_type == 'Forex'):    
+        symbol = asset_symbol.split('/')
+        asset_symbol = symbol[0] + symbol[1]
+        ticker = yf.Ticker(asset_symbol+'=X')
+        df = ticker.history(time_frame)
+        return df
+    else:
+        ticker = yf.Ticker(asset_symbol)
+        df = ticker.history(time_frame)
+        return df
 
 @app.route('/submit', methods=['GET'])
 def submit():
@@ -48,9 +54,8 @@ def submit():
         asset_type = request.args.get('asset_type')
         asset_symbol = request.args.get('asset_symbol')
         time_frame = request.args.get('time_frame')
-        period =request.args.get('period')
         total_outputs = request.args.get('total_outputs')
-        asset_data = get_asset_data(asset_symbol, )
+        asset_data = get_asset_data(asset_symbol,asset_type, time_frame )
         sr = calculate_sr(asset_data,total_outputs)
         return sr
         

@@ -5,6 +5,32 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #1e201f;
+  min-height: 100vh;
+  max-width: 100vw;
+  color: rgb(164, 164, 164);
+  overflow-x: hidden;
+}
+
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.App{
+  display: grid;
+  align-content: flex-start;
+  min-height: 100vh;
+  max-width: 100vw;
+  gap: 4rem;
+  /* justify-content: center; */
+}
+
+.tool-container{
+  display: grid;
+  gap: 1rem !important;
 }
 
 code {
@@ -13,6 +39,68 @@ code {
 }
 
 
-.result-container{
-  border: 2px solid red;
+.ad-container{
+  background-color: rgb(52, 52, 52);
+  margin-right: 2rem;
 }
+
+.result-container{
+  padding: 1rem;
+  border: .1rem solid rgb(105, 105, 105);
+}
+
+.page-content-container{
+  /* border: 2px solid green; */
+  min-width: 60vw;
+  max-width: 72vw;
+  /* max-width: 75vw; */
+  justify-self: center;
+  padding: 2rem;
+  gap: 2rem;
+  display: grid;
+  grid-template-columns: 65% 35%;
+  background-color: #111313;
+}
+
+.header-container{
+  background-color: #111313;
+  padding: 1rem;
+}
+
+form{
+  display: grid;
+  gap: .8rem;
+  padding: 1rem;
+
+
+}
+
+form > div{
+  display: flex;
+  justify-content: space-between;
+}
+
+.instruction-message{
+  background-color:#57d7e0;
+
+  width: 100%;
+  min-height: 2.5rem;
+  color: #171717;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tool-form-submit{
+  background-color: #e79c6d;
+  padding: .7rem;
+  width: 40%;
+  color:#1e201f;
+  font-weight: 600;
+  border: none;
+}
+
+/* form>div>input,
+form>div>select{
+  width: 20%;
+} */
