@@ -56,7 +56,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header children={[<h1>ToolsForTraders.net</h1>,]} />
+      <Header children={[<h1>S/R Zone Generator</h1>,]} />
       <PageContent children={[<div className="tool-container">
         <h2>Generate S/R Zones</h2>
         <p>Our Support and Resistance Generator identifies key price levels for various financial assets,

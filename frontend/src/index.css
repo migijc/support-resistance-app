@@ -81,18 +81,17 @@ form > div{
 }
 
 .instruction-message{
-  background-color:#57d7e0;
-
+  border:.1rem dotted #50bd6c;
   width: 100%;
   min-height: 2.5rem;
-  color: #171717;
+  /* color: #171717; */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .tool-form-submit{
-  background-color: #e79c6d;
+  background-color: #50bd6c;
   padding: .7rem;
   width: 40%;
   color:#1e201f;
