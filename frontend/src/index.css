@@ -6,10 +6,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #1e201f;
-  min-height: 100vh;
-  max-width: 100vw;
   color: rgb(164, 164, 164);
+  max-width: 100vw;
   overflow-x: hidden;
+}
+
+.uppercase-input{
+  text-transform: uppercase;
 }
 
 
@@ -21,16 +24,50 @@ body {
 
 .App{
   display: grid;
-  align-content: flex-start;
+  /* align-items: center; */
+  grid-template-rows: 6vh 94vh;
   min-height: 100vh;
   max-width: 100vw;
+  position: relative;
   gap: 4rem;
   /* justify-content: center; */
+}
+
+.home-page-title{
+  font-size: 3.3rem;
+  background-image: linear-gradient(to right, #50bd6c, #33fdce);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p{
+  color: white;
+  max-width: 80%;
 }
 
 .tool-container{
   display: grid;
   gap: 1rem !important;
+}
+
+
+.button-gray{
+  background-color: #111313;
+  color: white;
+  border: .1rem solid #50bd6c;
+  padding: 1rem;
+  min-width: 50%;
+}
+
+.hero-section{
+  display: grid;
+  /* max-width: 45vw;
+  min-width: 40vw; */
+  /* align-self: center; */
+  gap: 1rem;
+  /* text-align: center; */
+  /* padding: 2rem; */
+  /* background-color: red; */
 }
 
 code {
@@ -50,21 +87,19 @@ code {
 }
 
 .page-content-container{
-  /* border: 2px solid green; */
   min-width: 60vw;
-  max-width: 72vw;
-  /* max-width: 75vw; */
-  justify-self: center;
+  max-width: 65vw;
   padding: 2rem;
-  gap: 2rem;
   display: grid;
   grid-template-columns: 65% 35%;
   background-color: #111313;
+  border-radius: .3rem;
 }
 
 .header-container{
   background-color: #111313;
   padding: 1rem;
+
 }
 
 form{
@@ -75,19 +110,34 @@ form{
 
 }
 
-form > div{
-  display: flex;
-  justify-content: space-between;
+form > div > div{
+  display: grid;
+  grid-template-columns: 1fr 40%;
 }
 
+.symbol-format-example-wrapper{
+  /* border: 2px solid red; */
+}
+
+.symbol-format-example-wrapper > div{
+  display: flex;
+  gap: 1rem;
+}
+
+
 .instruction-message{
-  border:.1rem dotted #50bd6c;
+  border:.1rem solid #50bd6c;
   width: 100%;
   min-height: 2.5rem;
   /* color: #171717; */
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.inputs-wrapper{
+  display: grid;
+  gap: .5rem;
 }
 
 .tool-form-submit{

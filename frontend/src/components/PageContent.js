@@ -4,9 +4,9 @@ export default function PageContent({children}){
             <div>
                 {children.map(child=> child)}
             </div>
-            <div className='ad-container'>
+            {/* <div className='ad-container'>
                <p>AD PLACEMENT</p>
-            </div>
+            </div> */}
         </div>
     )
 }
