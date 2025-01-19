@@ -1,16 +1,11 @@
 from flask import Flask, request, render_template, jsonify
 from flask_cors import CORS, cross_origin
 import pandas as pd
-import pandas_ta as ta 
 import numpy as np
 from scipy import stats
 from sklearn.cluster import KMeans
 from scipy.signal import find_peaks
 import yfinance as yf
-
-
-import plotly.graph_objects as go
-
 
 app = Flask(__name__)
 CORS(app)
@@ -33,11 +28,11 @@ def calculate_sr(df, total_outputs):
     sr_levels = {}
     for i in range(min(total_outputs, len(res_arr))):  # Loop through the array
         sr_levels[f'{i+1}'] = np.round(res_arr[i][0], 5)
-    return sr_levels  
+    return sr_levels 
 
 # create logic to handle different asset types, IE Stocks dont need to be split etc..
 def get_asset_data(asset_symbol, asset_type, time_frame):
-    if(asset_type == 'Forex'):    
+    if(asset_type == 'Forex'):      
         symbol = asset_symbol.split('/')
         asset_symbol = symbol[0] + symbol[1]
         ticker = yf.Ticker(asset_symbol+'=X')

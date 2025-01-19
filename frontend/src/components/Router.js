@@ -55,7 +55,7 @@ function SrToolContainer() {
     <div className='tool-container'>
       <section className='tool-header-wrapper'>
         <h2>Support & Resistance Zone Generator</h2>
-        <p>Our Support and Resistance Generator identifies key price levels for various financial assets,
+        <p>Our S/R Zone Generator identifies key price levels for various financial assets,
           such as Forex, stocks, and cryptocurrencies.
           These "support" and "resistance" levels indicate potential price barriers where an asset's upward or downward movement might pause or reverse.
           By inputting the asset and desired timeframe,
@@ -106,7 +106,7 @@ function SrGeneratorForm(props) {
         </div>
         <div>
           <label>Asset Symbol</label>
-          <input className="uppercase-input" autoCapitalize="character" placeholder="Asset Symbol" name="asset_symbol" onChange={(e) => handleInputChange(e)} />
+          <input className="uppercase-input" autoCapitalize="character" placeholder="Symbol" name="asset_symbol" onChange={(e) => handleInputChange(e)} />
         </div>
         <div>
           <label>Time Frame</label>

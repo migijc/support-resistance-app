@@ -103,7 +103,7 @@ h1,h2, button{
 
 
 .hero-section > div> p {
-  max-width: 80%;
+  max-width: 70%;
   line-height: 1.5rem;
   text-align: center;
 }
@@ -131,7 +131,7 @@ code {
 .result-title-container{
   background-color: #19c784;
   padding: .4rem;
-  /* color: #111313; */
+  color: #111313;
   text-align: center;
 }
 
@@ -145,12 +145,25 @@ code {
   align-items: center;
 }
 
+.red-bg{
+  background-color: rgba(255, 0, 0, 0.226);
+  border-radius: .45rem;
+}
+
+.green-bg{
+  background-color: rgba(0, 255, 64, 0.226);
+  border-radius: .45rem;
+
+}
+
 .header-container{
   /* background-color: #111313; */
   border-bottom: .2rem solid #19c784;
   padding: 1rem;
   font-weight: 700;
   font-size: 1.1rem;
+  position: fixed;
+  width: 100%;
 }
 
 .result-zone{
@@ -206,12 +219,9 @@ label::after{
   color: #f45959d4;
 }
 
-
-
 .button-wrapper{
   /* display: grid; */
   padding-top: 1rem;
-
 }
 
 .tool-form-submit{

@@ -9,10 +9,10 @@ export default function Home(props){
 
     return (
         <div>
-            <PageContent children={[<div className="home-page-content">
+            <PageContent children={[<div className="home-page-content">   
                 <section className="hero-section">
                     <div style={{}}>
-                        <h2 className="page-title home-page-title">Discover Powerful Support & Resistance <br/> Levels with Ease</h2>
+                        <h2 className="page-title home-page-title">Discover Powerful <span className="green-bg">Support</span> & <span className="red-bg">Resistance</span> Levels with Ease</h2>
                     </div>
                     <div style={{}}>
                         <p>Tired of spending hours drawing trendlines and trying to pinpoint support and resistance levels? Our generator does the heavy lifting for you. Simply input the asset and timeframe, and our advanced algorithms will instantly calculate the most critical levels. Spend less time on tedious analysis and more time capitalizing on trading opportunities.</p>
