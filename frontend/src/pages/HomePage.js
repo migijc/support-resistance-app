@@ -8,7 +8,7 @@ export default function Home(props){
 
 
     return (
-        <div>
+    
             <PageContent children={[<div className="home-page-content">   
                 <section className="hero-section">
                     <div style={{}}>
@@ -22,18 +22,6 @@ export default function Home(props){
                     </div>
                 </section>
            </div>]}/>
-           
-           {/* <section>
-                    <div>
-                        <h3>Save time</h3>
-                    </div>
-                    <div>
-                        <h3>Improve Accuracy</h3>
-                    </div>
-                    <div>
-                        <h3>Boost trading confidence</h3>
-                    </div>
-                </section> */}
-        </div>
+ 
     )
 }

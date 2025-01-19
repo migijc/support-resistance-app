@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from '../pages/HomePage'
 import PageContent from './PageContent'
 import { useState, useEffect } from 'react'
+import AboutPage from '../pages/AboutPage'
 
 const timeFramesList = ['5D', '1MO', '3MO', '6MO', '1Y', '2Y', '5Y', '10Y', 'YTD', 'MAX']
 const assetTypesList = ['Forex', 'Stocks', 'Cryptocurrencies']
@@ -133,8 +134,8 @@ export default function Router(props) {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='sr-generator' element={<PageContent children={[<SrToolContainer />]}>
-
         </PageContent>} />
+        <Route path='about' element={<AboutPage />} />
 
       </Routes>
     </BrowserRouter>
