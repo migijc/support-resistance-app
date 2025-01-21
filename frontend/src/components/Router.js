@@ -27,20 +27,27 @@ function SrToolContainer() {
   }
 
   async function get_sr_levels() {
-    const params = new URLSearchParams(formData);
-    console.log(params)
-    const url = new URL('/submit', 'http://127.0.0.1:5000');
-    url.search = params.toString();
-    const res = await fetch(url.toString(), {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        'Origin': 'http://localhost:3000',
-        'Access-Control-Allow-Origin': 'http://localhost:3000'
-      },
-    });
-    const data = await res.json();
-    setRes(data)
+    try{
+      const params = new URLSearchParams(formData);
+      console.log(params)
+      const url = new URL('/submit', 'http://127.0.0.1:5000');
+      url.search = params.toString();
+      const res = await fetch(url.toString(), {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          'Origin': 'http://localhost:3000',
+          'Access-Control-Allow-Origin': 'http://localhost:3000'
+        },
+      });
+      const data = await res.json();
+      console.log(data)
+      setRes(data)
+    }
+    catch(err){
+      console.log(err)
+    }
+
   }
 
   useEffect(() => {

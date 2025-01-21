@@ -18,7 +18,7 @@ function App() {
       <div>
         <Header children={[<h1>SRGenerator.com</h1>,]} />
       </div>
-      <div style={{justifySelf:'center'}}>
+      <div>
          <Router/>
       </div>
      
