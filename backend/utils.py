@@ -25,7 +25,6 @@ def create_test_ticket():
     print(hist)
 
 def get_asset_data(asset_symbol, asset_type, time_frame):
-    try:
         if(asset_type == 'Forex'):      
             symbol = asset_symbol.split('/')
             asset_symbol = symbol[0] + symbol[1]
@@ -36,7 +35,5 @@ def get_asset_data(asset_symbol, asset_type, time_frame):
             ticker = yf.Ticker(asset_symbol)
             df = ticker.history(time_frame)
             return df
-    except Exception as e:
-        print(e)
 
 get_asset_data('msft', 'Stocks', '1d')
