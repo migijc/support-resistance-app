@@ -18,9 +18,9 @@ def calculate_sr(df, total_outputs):
         high_peaks, _ = find_peaks(df['High'])
         low_peaks, _ = find_peaks(df['Low'])
         close_valleys, _ = find_peaks(-df['Close'])
-        open_valleys, _ = find_peaks(df['Open'])
-        high_valleys, _ = find_peaks(df['High'])
-        low_valleys, _ = find_peaks(df['Low'])
+        open_valleys, _ = find_peaks(-df['Open'])
+        high_valleys, _ = find_peaks(-df['High'])
+        low_valleys, _ = find_peaks(-df['Low'])
         cluster_data = pd.DataFrame({'Price': df['Close'].iloc[[*close_peaks,*open_peaks,*high_peaks,*low_peaks, *close_valleys, *open_valleys, *high_valleys, *low_valleys,]]})
         # Apply K-Means clustering
         kmeans = KMeans(n_clusters= int(total_outputs), random_state=0, ).fit(cluster_data)
